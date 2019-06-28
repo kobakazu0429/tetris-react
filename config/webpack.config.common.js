@@ -8,7 +8,10 @@ module.exports = {
   entry: { app: path.resolve(__dirname, "../src/index.tsx") },
 
   resolve: {
-    extensions: [".js", ".ts", ".jsx", ".tsx"]
+    extensions: [".js", ".ts", ".jsx", ".tsx"],
+    alias: {
+      "@": path.resolve(__dirname, "../src")
+    }
   },
 
   plugins: [

@@ -3,9 +3,13 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "es2015",
-    "target": "es6",
+    "target": "es2018",
     "jsx": "react",
     "typeRoots": ["node_modules/@types", "src/typings"],
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"]
+    },
     "lib": ["esnext", "dom"],
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -16,6 +20,8 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
     "newLine": "LF"
   },
   "include": ["src/**/*"],
