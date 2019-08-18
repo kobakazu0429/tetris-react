@@ -1,0 +1,65 @@
+version: 2.1
+executors:
+  default:
+    working_directory: ~/workspace
+    docker:
+      - image: node:12
+
+commands:
+  restore_yarn:
+    steps:
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys: yarn-{{ checksum "yarn.lock" }}
+
+  save_yarn:
+    steps:
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/workspace/node_modules
+
+jobs:
+  setup:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: yarn install
+      - save_yarn
+
+  lint:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_yarn
+      - run:
+          name: Lint
+          command: yarn lint
+      - save_yarn
+
+  build:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - restore_yarn
+      - run:
+          name: Build
+          command: yarn build
+      - save_yarn
+
+workflows:
+  pull-request:
+    jobs:
+      - setup
+      - lint:
+          requires:
+            - setup
+      - build:
+          requires:
+            - lint
