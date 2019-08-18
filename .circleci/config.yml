@@ -40,7 +40,6 @@ jobs:
     steps:
       - checkout
       - restore_yarn
-      - setup
       - run:
           name: Lint
           command: yarn lint
@@ -52,7 +51,6 @@ jobs:
     steps:
       - checkout
       - restore_yarn
-      - setup
       - run:
           name: Build
           command: yarn build
@@ -62,9 +60,5 @@ workflows:
   pull-request:
     jobs:
       - setup
-      - lint:
-          requires:
-            - setup
-      - build:
-          requires:
-            - lint
+      - lint
+      - build
