@@ -1,5 +1,7 @@
 # react-webpack-boilerplate
 
+[![CircleCI](https://circleci.com/gh/kobakazu0429/react-webpack-boilerplate/tree/master.svg?style=svg)](https://circleci.com/gh/kobakazu0429/react-webpack-boilerplate/tree/master)
+
 My React + Webpack boilerplate 201905
 
 - yarn
