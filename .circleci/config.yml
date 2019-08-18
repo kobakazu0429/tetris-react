@@ -10,7 +10,10 @@ commands:
     steps:
       - restore_cache:
           name: Restore Yarn Package Cache
-          keys: yarn-{{ checksum "yarn.lock" }}
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
 
   save_yarn:
     steps:
