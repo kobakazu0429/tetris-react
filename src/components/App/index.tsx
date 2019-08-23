@@ -10,6 +10,7 @@ interface Position {
 
 const App = () => {
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
+  const [rotation, setRotation] = useState(0);
 
   const handlePosition = useCallback(
     (e: KeyboardEvent) => {
@@ -18,18 +19,19 @@ const App = () => {
       if (key === "s") setPosition({ x: position.x, y: position.y + 1 });
       if (key === "a") setPosition({ x: position.x - 1, y: position.y });
       if (key === "d") setPosition({ x: position.x + 1, y: position.y });
+      if (key === "r") setRotation(rotation + 1);
     },
-    [position]
+    [position, rotation]
   );
 
   useEffect(() => {
     window.addEventListener("keydown", handlePosition);
     return () => window.removeEventListener("keydown", handlePosition);
-  }, [position]);
+  }, [position, rotation]);
 
   return (
     <Wrapper>
-      <T position={position} />
+      <T position={position} rotation={rotation} />
     </Wrapper>
   );
 };

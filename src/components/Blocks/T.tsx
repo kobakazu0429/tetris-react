@@ -13,11 +13,12 @@ interface Position {
 
 interface Props {
   position: Position;
+  rotation: number;
 }
 
-export const T = ({ position }: Props) => {
+export const T = ({ position, rotation }: Props) => {
   return (
-    <Wrapper position={position}>
+    <Wrapper position={position} rotation={rotation}>
       <Line>
         {T_BLOCKS[0].map(v => (v ? <Block color="Yellow" /> : <DummyBlock />))}
       </Line>
@@ -34,6 +35,8 @@ const Wrapper = styled.div<Props>`
   position: absolute;
   top: ${props => 32 * props.position.y}px;
   left: ${props => 32 * props.position.x}px;
+  transform: rotate(${props => 90 * props.rotation}deg);
+  transform-origin: left top;
 `;
 
 const Line = styled.div`
