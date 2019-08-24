@@ -23,7 +23,7 @@ export const T = ({ position, rotation }: Props) => {
       {BLOCKS_PATTERN.map(BLOCK_PATTERN => (
         <Line>
           {BLOCK_PATTERN.map(v =>
-            v ? <Block color="Yellow" /> : <DummyBlock />
+            v ? <Block color="Purple" /> : <DummyBlock />
           )}
         </Line>
       ))}
