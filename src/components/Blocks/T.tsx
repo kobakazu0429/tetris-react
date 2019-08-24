@@ -5,7 +5,7 @@ import { Block } from "./_block";
 import { DummyBlock } from "./_dummy-block";
 import { BLOCK_SIZE } from "@/constants/size";
 
-const T_BLOCKS = [[0, 1, 0], [1, 1, 1]];
+const BLOCKS_PATTERN = [[0, 1, 0], [1, 1, 1]];
 
 interface Position {
   x: number;
@@ -20,12 +20,13 @@ interface Props {
 export const T = ({ position, rotation }: Props) => {
   return (
     <Wrapper position={position} rotation={rotation}>
-      <Line>
-        {T_BLOCKS[0].map(v => (v ? <Block color="Yellow" /> : <DummyBlock />))}
-      </Line>
-      <Line>
-        {T_BLOCKS[1].map(v => (v ? <Block color="Yellow" /> : <DummyBlock />))}
-      </Line>
+      {BLOCKS_PATTERN.map(BLOCK_PATTERN => (
+        <Line>
+          {BLOCK_PATTERN.map(v =>
+            v ? <Block color="Yellow" /> : <DummyBlock />
+          )}
+        </Line>
+      ))}
     </Wrapper>
   );
 };
