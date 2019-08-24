@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { Block } from "./_block";
 import { DummyBlock } from "./_dummy-block";
+import { BLOCK_SIZE } from "@/constants/size";
 
 const T_BLOCKS = [[0, 1, 0], [1, 1, 1]];
 
@@ -33,10 +34,10 @@ const Wrapper = styled.div<Props>`
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: ${props => 32 * props.position.y}px;
-  left: ${props => 32 * props.position.x}px;
+  top: ${props => BLOCK_SIZE * props.position.y}px;
+  left: ${props => BLOCK_SIZE * props.position.x}px;
   transform: rotate(${props => 90 * props.rotation}deg);
-  transform-origin: left top;
+  transform-origin: ${BLOCK_SIZE + BLOCK_SIZE / 2}px ${(BLOCK_SIZE * 3) / 2}px;
 `;
 
 const Line = styled.div`

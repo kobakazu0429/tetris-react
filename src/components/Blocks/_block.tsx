@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-const BLOCK_SIZE = 32;
+import { BLOCK_SIZE } from "@/constants/size";
 
 interface Props {
   color: "Purple" | "Cyan" | "Yellow" | "Green" | "Red" | "Blue" | "Orange";
